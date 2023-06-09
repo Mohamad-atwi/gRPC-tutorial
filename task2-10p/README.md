@@ -9,5 +9,3 @@ python client.py
 Your second task is to create server with gRPC that perform some math tasks:
 
 addition, subtraction, multiplication, division and exponentiation
-
-remember to return error from server e.g. while divided by zero

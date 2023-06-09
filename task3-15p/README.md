@@ -9,4 +9,5 @@ python server.py
 python client.py
 
 Your last task is to improve the usage of the server from the second task 
-ping-pong stream type that allow sending more data in a single procedure call
+ping-pong stream type that allow sending more data in a single procedure call.
+Return error from server e.g. while divided by zero context may be helpful
