@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+service Calculator{
+
+  // define here your procedures e.g. rpc add(Request) returns (Response) {}
+
+}
+
+message Request{
+ // TODO
+}
+
+message Response{
+ // TODO
+}
