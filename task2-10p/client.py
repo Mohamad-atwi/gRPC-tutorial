@@ -1,6 +1,6 @@
 import grpc
-import helloworld_pb2
-import helloworld_pb2_grpc
+import calculator_pb2
+import calculator_pb2_grpc
 
 
 def run():
