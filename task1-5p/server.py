@@ -1,15 +1,13 @@
+# server.py
 from concurrent import futures
-
 import grpc
 import helloworld_pb2
 import helloworld_pb2_grpc
 
-
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
-
     def SayHello(self, request, context):
         print("Server received req from", request.name)
-        #return your response here
+        return helloworld_pb2.HelloResponse(message='Hello, ' + request.name)
 
 def serve():
     port = '12345'
@@ -19,7 +17,6 @@ def serve():
     server.start()
     print("Server started, listening on " + port)
     server.wait_for_termination()
-
 
 if __name__ == '__main__':
     serve()

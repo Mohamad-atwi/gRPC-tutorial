@@ -1,15 +1,16 @@
 syntax = "proto3";
 
-service Calculator{
-
-  // define here your procedures e.g. rpc add(Request) returns (Response) {}
-
+service Calculator {
+  rpc Calculate(stream Request) returns (stream Response) {}
 }
 
-message Request{
- // TODO
+message Request {
+  int32 operand1 = 1;
+  int32 operand2 = 2;
+  string operation = 3;
 }
 
-message Response{
- // TODO
+message Response {
+  int32 result = 1;
+  string error_message = 2;
 }
