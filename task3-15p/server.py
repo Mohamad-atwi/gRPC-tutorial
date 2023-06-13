@@ -6,23 +6,22 @@ import calculator_pb2_grpc
 class Calculator(calculator_pb2_grpc.CalculatorServicer):
     def Calculate(self, request_iterator, context):
         for request in request_iterator:
-            response = calculator_pb2.Response()
             if request.operation == '+':
-                response.result = request.operand1 + request.operand2
+                result = request.operand1 + request.operand2
             elif request.operation == '-':
-                response.result = request.operand1 - request.operand2
+                result = request.operand1 - request.operand2
             elif request.operation == '*':
-                response.result = request.operand1 * request.operand2
+                result = request.operand1 * request.operand2
             elif request.operation == '/':
                 if request.operand2 == 0:
-                    response.error_message = "Division by zero error"
-                else:
-                    response.result = request.operand1 // request.operand2
+                    context.abort(grpc.StatusCode.INVALID_ARGUMENT, "Division by zero error")
+                result = request.operand1 // request.operand2
             elif request.operation == '^':
-                response.result = request.operand1 ** request.operand2
+                result = request.operand1 ** request.operand2
             else:
-                response.error_message = "Invalid operation"
+                context.abort(grpc.StatusCode.INVALID_ARGUMENT, "Invalid operation")
 
+            response = calculator_pb2.Response(result=result)
             yield response
 
 def serve():
