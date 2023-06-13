@@ -1,6 +1,8 @@
 from concurrent import futures
 
 import grpc
+import calculator_pb2
+import calculator_pb2_grpc
 
 class Calculator(calculator_pb2_grpc.CalculatorServicer):
 
